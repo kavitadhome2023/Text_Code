@@ -1,0 +1,75 @@
+/*2. Define a class called  FourWheeler consisting of  name, cc, safety, price. 
+ 
+If cc is less than 1000 then it will or greater than 4000, then it will generate VehicleException with information like ‘It is a Two Wheeler, not Four Wheeler’ or ‘It is a Vehicle not a Train ’ respectively. 
+ 
+Similarly if the safety if not 5 then it’ll generate UnsafetyException with a message ‘Sorry, Invalid Safty features’. 
+ 
+The VehicleException and UnsafetyExceptions are user defined exception classes. 
+ 
+Create at least 4 object’s of FourWheer class in main() method of Factory class to validate the FourWheeres cc and safety. 
+Create at least 4 object’s of FourWheer class in main() method of Factory class to validate the FourWheeres cc and safety. */
+
+
+
+
+
+package aws_package;
+import java.util.Scanner;
+
+class FourWheller{
+	String name;
+	int cc;
+	int safety;
+	int price;
+	FourWheller(String n,int c,int sft,int p){
+		this.name=n;
+		this.cc=c;
+		this.safety=sft;
+		this.price=p;
+	}
+	void VehicleException() {
+		System.out.println("Enter Available cc: ");
+		Scanner s=new Scanner(System.in);
+		int carcc=s.nextInt();
+		if(carcc<1000||carcc>4000) {
+			System.out.println("This is showing two_wheller");
+		}
+	}
+	void display()  {
+		System.out.println(name+" "+cc+" "+safety+" "+price);
+	}
+	void UnsafetyException() {
+		System.out.println("Enter safety value: ");
+		Scanner s=new Scanner(System.in);
+		int sftvvl=s.nextInt();
+		if(sftvvl!=5) {
+			System.out.println("Sorry,Invalid safety features");
+		}
+		
+	}
+}
+
+
+
+public class FourWheelar1 {
+
+	public static void main(String[] args) {
+		FourWheller f1=new FourWheller(" Mahindra Bolero",1200,5,1500000);
+		f1.display();
+		f1.UnsafetyException();
+		FourWheller f2=new FourWheller("KTM",1500,5,1402000000);
+		f2.display();
+		f2.VehicleException();
+		f2.UnsafetyException();
+		FourWheller f3=new FourWheller("Hyundai",900,4,400000);
+		f3.display();
+		f3.VehicleException();
+		f3.UnsafetyException();
+		FourWheller f4=new FourWheller("Maruti Ciaz",1300,6,20000000);
+		f4.display();
+		f4.VehicleException();
+		f4.UnsafetyException();
+
+	}
+
+}
