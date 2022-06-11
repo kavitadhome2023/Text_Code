@@ -1,0 +1,84 @@
+package aws_package;
+
+	import  java.sql.*;
+	import java.util.Scanner;
+	import java.sql.Connection;
+	import java.sql.DriverManager;
+	import java.sql.Statement;
+
+
+	 class db1 {
+		@SuppressWarnings("unused")
+		static  public  void   main(String args[]) throws Exception {
+		        Class.forName("org.postgresql.Driver");
+		            Connection con= DriverManager.getConnection(
+		 "jdbc:postgresql://localhost:5432/awsdb", "postgres", "Amazon2022$");           
+		            Statement st = con.createStatement();
+
+
+		    		Scanner  sc = new  Scanner(System.in);
+		    		System.out.println("Enter regdno, stdname, branch, marks");
+		    		int  regdno= sc.nextInt();
+		    		String  stdname =  sc.next();
+		    		String  branch= sc.next();
+		    		float marks = sc.nextFloat();
+//1.insert a Record
+                 String xy= "insert into student  values("+ regdno + " , '"+ stdname+ "',"
+                 		+ " '"+branch+"', "+marks + ")";
+		    		System.out.println(xy);
+		    		sc.close();
+
+		    		int z =st.executeUpdate(xy);
+		    		if(z>0)
+		    			System.out.println("insert record sucessfull !!");
+		    		con.close(); 
+		            int choice =sc.nextInt();
+		            switch(choice){
+		            
+		            System.out.println("Choice option:" +1.
+		            case 1:
+//update a Record  
+		    		String xyz="update student set regdno='"+regdno+"', stdname='"+stdname+"', branch="+branch+" where regdno="+regdno;                   
+		    		System.out.println(xyz);
+		    		sc.close();
+
+		    		int xy1 =st.executeUpdate(xyz);
+		    		if(xy1>0)
+		    			System.out.println("Update record sucessfully");
+		    		con.close(); 
+		    		break;
+//Retrieve the record
+		            case 2:
+		    		String qry="Retrieve student set regdno='"+regdno+"', stdname='"+stdname+"', branch="+branch+" where max(marks)=";                   
+		    		System.out.println(qry);
+		    		sc.close();
+
+		    		int xy11 =st.executeUpdate(qry);
+		    		if(xy11>0)
+		    			System.out.println("Retrieve record sucessfully");
+		    		con.close();
+		    		break;
+// delete the record       
+		    		
+		            case 3:
+		    		String abc="delete student set regdno='"+regdno+"', stdname='"+stdname+"', branch="+branch+" where stdname=";                   
+		    		System.out.println(abc);
+		    		sc.close();
+
+		    		int abc1 =st.executeUpdate(qry);
+		    		if(xy11>0)
+		    			System.out.println("Retrieve record sucessfully");
+		    		con.close();
+		           break;
+		    		   		
+		    		
+		
+		    		
+		        ResultSet  rs  =  st.executeQuery("select * from student");
+		        while(rs.next()) 
+		                System.out.println(rs.getInt("regdno") +", "+ 
+		        rs.getString("stdname")+", "+ rs.getString("branch"));
+		      
+		        con.close();
+		}}
+
